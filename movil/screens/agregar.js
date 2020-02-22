@@ -17,17 +17,15 @@ export default class Agregar extends Component {
 
     _pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-
             mediaTypes: ImagePicker.MediaTypeOptions.All,
-            base64: true,
             allowsEditing: true,
             aspect: [2, 2],
             quality: 1
         });
+        console.log(result);
         if (!result.cancelled) {
             this.setState({ image: result.uri });
         }
-        console.log(result);
     };
 
     takePicture = async () => {
@@ -69,19 +67,7 @@ export default class Agregar extends Component {
                                     </Button>
                                 </Body>
                             </Body>
-
-                            <Body>
-                                <Right>
-                                    <Button small light style={styles.btn} onPress={this.takePicture}>
-                                        <Entypo name='camera' size={15} style={styles.icono}></Entypo>
-                                        <Text>Camara</Text>
-                                    </Button>
-                                </Right>
-                            </Body>
                         </CardItem>
-
-
-
                         <CardItem style={styles.position}>
                             <Body>
                                 <Item >
@@ -107,15 +93,6 @@ export default class Agregar extends Component {
                                 </Item>
                             </Right>
                         </CardItem>
-                        <CardItem style={styles.position2}>
-                            <Body>
-                                <Item >
-                                    <Entypo name='location' size={20}></Entypo>
-                                    <Input
-                                        placeholder='Ubicación' />
-                                </Item>
-                            </Body>
-                        </CardItem>
                         <CardItem style={styles.position3}>
                             <Body>
                                 <Item >
@@ -126,14 +103,14 @@ export default class Agregar extends Component {
                             </Body>
                         </CardItem>
                         <CardItem style={styles.botones}>
-                            <Left>
+                            <Body>
                                 <Body>
-                                    <Button small light style={styles.botones1}>
-                                        <Entypo name='edit' size={15} style={styles.icono}></Entypo>
-                                        <Text>Editar</Text>
+                                    <Button small light style={styles.botones1} onPress={() => this.props.navigation.navigate('Lista')}>
+                                        <Entypo name='list' size={15} style={styles.icono}></Entypo>
+                                        <Text>Lista</Text>
                                     </Button>
                                 </Body>
-                            </Left>
+                            </Body>
                             <Body>
                                 <Body>
                                     <Button small light style={styles.botones2}>
@@ -142,14 +119,6 @@ export default class Agregar extends Component {
                                     </Button>
                                 </Body>
                             </Body>
-                            <Right>
-                                <Body>
-                                    <Button small light style={styles.botones3}>
-                                        <Entypo name='cup' size={15} style={styles.icono}></Entypo>
-                                        <Text>Borrar</Text>
-                                    </Button>
-                                </Body>
-                            </Right>
                         </CardItem>
                         </KeyboardAvoidingView>
                     </Card>
